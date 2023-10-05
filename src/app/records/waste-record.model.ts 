@@ -1,0 +1,28 @@
+enum FoodCategory {
+  FruitsAndVegetables = 'Fruits & Vegetables',
+  DairyProducts = 'Dairy Products',
+  Sides = 'Sides',
+  Dessert = 'Dessert',
+  SaucesAndSoups = 'Sauces & Soups',
+  Sandwiches = 'Sandwiches',
+  SaladPreparations = 'Salad Preparations',
+  BanquetsBuffetsAndCatering = 'Banquets, Buffets & Catering',
+  Beverages = 'Beverages',
+  TrimWasteAvoidable = 'Trim waste avoidable',
+  PlateWasteBreakfast = 'Plate Waste Breakfast',
+  PlateWasteLunch = 'Plate Waste Lunch',
+  PlateWasteDinner = 'Plate Waste Dinner',
+}
+
+interface FoodWasteEntry {
+    public category: FoodCategory;
+    public quantity: number;
+    public reason: string;
+}
+
+interface DailyWasteRecord {
+    public date: Date;
+    public turnover: number;
+    public guests: number;
+    public foodWasteEntries: { [category in FoodCategory]?: FoodWasteEntry };
+}

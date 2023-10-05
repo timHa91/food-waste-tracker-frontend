@@ -4,13 +4,14 @@
             <h4>{{ today | date:'mediumDate' }}</h4>
             <h1>Food Waste Overview</h1>
         </div>
-        <button class="btn btn-info">Add Record</button>
+        <button routerLink="/add-record" class="btn btn-info">Add Record</button>
     </div>
     <div class="list-group list-group-flush mt-5">
-        <a style="cursor: pointer;" *ngFor="let record of records" class="list-group-item list-group-item-action mt-4">
+        <a [routerLink]="['/records', record.recordId]" *ngFor="let record of records"
+            class="list-group-item list-group-item-action mt-4" style="cursor: pointer;">
             <div class="d-flex w-100 justify-content-between align-items-center">
-                <div>{{ record.date| date:'mediumDate' }}</div>
-                <div>{{ sumQuantity(record) }} Kg</div>
+                <div>{{ record.date | date:'mediumDate' }}</div>
+                <div>{{ record.totalQuantity }} Kg</div>
             </div>
         </a>
     </div>

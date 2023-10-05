@@ -1,28 +1,3 @@
-<!-- <button routerLink="/records" class="btn btn btn-link">Back</button>
-<div class="container mt-4">
-    <h1>Data Input</h1>
-    <div class="list-group list-group-flush mt-5">
-        <div class="list-group-item">
-            <div class="d-flex w-100 justify-content-between align-items-center">
-                <div>Turnover</div>
-                <div>{{ record.turnover }}</div>
-            </div>
-        </div>
-        <div class="list-group-item">
-            <div class="d-flex w-100 justify-content-between align-items-center">
-                <div>Guests</div>
-                <div>{{ record.guests }}</div>
-            </div>
-        </div>
-    </div>
-    <div class="list-group list-group-flush mt-5">
-        <div class="list-group-item" *ngFor="let entry of record.foodWasteEntries | keyvalue">
-            <h2>{{ entry.key }}</h2>
-            <div>{{ getFoodWasteEntry(entry.value).quantity }} Kg</div>
-            <div>{{ getFoodWasteEntry(entry.value).reason }}</div>
-        </div>
-    </div>
-</div> -->
 <button class="btn btn btn-link" routerLink="/records">Back</button>
 <div class="content container mt-4">
     <h1>Data Input</h1>
@@ -31,8 +6,7 @@
             <div class="list-group-item">
                 <div class="d-flex w-100 justify-content-between align-items-center">
                     <label>Date</label>
-                    <input [value]="convertDateToString(record.date)" name="creationDate" class="form-control"
-                        type="date">
+                    <input [(ngModel)]="currentDate" name="creationDate" class="form-control" type="date">
                 </div>
             </div>
             <div class="list-group-item">
@@ -55,11 +29,9 @@
                 <h4>{{ entry.key }}</h4>
                 <div class="d-flex w-100 justify-content-between align-items-center">
                     <div><label>Reason for loss</label>
-                        <input [(ngModel)]="getFoodWasteEntry(entry.value).reason" name="reason_{{entry.key}}"
-                            class="form-control" type="text">
+                        <input ngModel name="reason_{{entry.key}}" class="form-control" type="text">
                     </div>
-                    <input [(ngModel)]="getFoodWasteEntry(entry.value).quantity" name="quantity_{{entry.key}}"
-                        class="form-control" type="number">
+                    <input ngModel name="quantity_{{entry.key}}" class="form-control" type="number">
                 </div>
             </div>
         </div>

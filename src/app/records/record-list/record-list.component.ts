@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DailyWasteRecord, FoodWasteEntry, FoodCategory } from '../waste-record.model';
+import { DailyWasteRecord, FoodWasteEntry, FoodCategory, RecordListEntry } from '../waste-record.model';
 
 @Component({
   selector: 'app-record-list',
@@ -8,7 +8,7 @@ import { DailyWasteRecord, FoodWasteEntry, FoodCategory } from '../waste-record.
 })
 export class RecordListComponent {
   today = new Date();
-  records!: DailyWasteRecord[];
+  records!: RecordListEntry[];
 
   // constructor(private recordService: RecordService) { }
 
@@ -16,65 +16,24 @@ export class RecordListComponent {
     // this.records = this.recordService.getRecords();
     this.records = [
       {
+        recordId: 1,
         date: new Date(),
-        turnover: 10000,
-        guests: 200,
-        foodWasteEntries: {
-          [FoodCategory.FruitsAndVegetables]: {
-            category: FoodCategory.FruitsAndVegetables,
-            quantity: 50,
-            reason: 'Verfault'
-          },
-          [FoodCategory.DairyProducts]: {
-            category: FoodCategory.DairyProducts,
-            quantity: 20,
-            reason: 'Quality'
-          },
-        }
+        totalQuantity: 70
       },
       {
+        recordId: 2,
         date: new Date(),
-        turnover: 10000,
-        guests: 200,
-        foodWasteEntries: {
-          [FoodCategory.FruitsAndVegetables]: {
-            category: FoodCategory.FruitsAndVegetables,
-            quantity: 20,
-            reason: 'Verfault'
-          },
-          [FoodCategory.DairyProducts]: {
-            category: FoodCategory.DairyProducts,
-            quantity: 20,
-            reason: 'Quality'
-          },
-        }
+        totalQuantity: 80,
       },
       {
+        recordId: 3,
         date: new Date(),
-        turnover: 10000,
-        guests: 200,
-        foodWasteEntries: {
-          [FoodCategory.FruitsAndVegetables]: {
-            category: FoodCategory.FruitsAndVegetables,
-            quantity: 20,
-            reason: 'Verfault'
-          },
-          [FoodCategory.DairyProducts]: {
-            category: FoodCategory.DairyProducts,
-            quantity: 20,
-            reason: 'Quality'
-          },
-        }
+        totalQuantity: 100,
       }
     ];
   }
 
   addRecord() {
     // Navigieren Sie zur "Add Record"-Seite, wenn der Button geklickt wird
-  }
-
-  sumQuantity(record: DailyWasteRecord) {
-    let quantities = Object.values(record.foodWasteEntries).map(entry => entry.quantity);
-    return quantities.reduce((total, quantity) => total + quantity, 0);
   }
 }

@@ -20,6 +20,12 @@ export interface FoodWasteEntry {
     reason: string;
 }
 
+export interface RecordListEntry {
+    recordId: number;
+    date: Date;
+    totalQuantity: number;
+}
+
 export interface DailyWasteRecord {
     date: Date;
     turnover: number;
